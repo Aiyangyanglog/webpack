@@ -1,16 +1,36 @@
-let str = require('./a.js');
-console.log(str);
+// webpack 打包图片
+// 1)在js中创建图片来引入
+// import logo from './logo.png';
+// let image = new Image();
+// console.log(logo);
+// image.src = './logo.png'; // 就是一个普通的字符串
+// document.body.appendChild(image);
 
-require('./index.css');
-require('./index.less');
+// 2)在css引入background('url')
+// 3)<img src="" alt="">
 
-let fn = () => {
- console.log('log');
-}
-fn();
 
-class A {
-    a = 1;
-}
-let a = new A();
-console.log(a.a);
+// import $ from 'jquery';
+// expose-loader 暴露全局的loader
+// console.log(window.$); // 在每个模块中注入 $对象
+
+// 1)expose-loader 暴露到window上
+// 2)providePlugin 给每个模块提供一个$
+// 3)引入不打包
+
+// let str = require('./a.js');
+// console.log(str);
+
+// require('./index.css');
+// require('./index.less');
+
+// let fn = () => {
+//  console.log('log');
+// }
+// fn();
+
+// class A {
+//     a = 1;
+// }
+// let a = new A();
+// console.log(a.a);

@@ -4,6 +4,7 @@ let HtmlWebpackPlugin = require('html-webpack-plugin');
 let MiniCssExtractPlugin = require('mini-css-extract-plugin');
 let OptimizeCss = require('optimize-css-assets-webpack-plugin');
 let UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+let webpack = require('webpack');
 
 module.exports = {// 开发服务器的位配置
     optimization:{ // 优化项
@@ -35,19 +36,26 @@ module.exports = {// 开发服务器的位配置
         }),
         new MiniCssExtractPlugin({ // 抽离样式
             filename: 'main.css'
-        })
+        }),
+        // new webpack.ProvidePlugin({ // 在每个模块中都注入$
+        //     $: 'jquery'
+        // })
     ],
     module: {
         rules: [  // loader 默认是从右向左执行 从下到上执行
-            {
-                test: /\.js$/,
-                use: {
-                    loader: 'eslint-loader', // eslint
-                    options: {
-                        enforce: 'pre' // previous  post
-                    }
-                },
-            },
+            // {
+            //     test: require.resolve('jquery'),
+            //     use: 'expose-loader?$'
+            // },
+            // {
+            //     test: /\.js$/,
+            //     use: {
+            //         loader: 'eslint-loader', // eslint
+            //         options: {
+            //             enforce: 'pre' // previous  post
+            //         }
+            //     },
+            // },
             {
                 test: /\.js$/,
                 use: {
