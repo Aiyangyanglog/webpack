@@ -37,8 +37,17 @@ module.exports = {// 开发服务器的位配置
             filename: 'main.css'
         })
     ],
-    module: { // 模块
-        rules: [ 
+    module: {
+        rules: [  // loader 默认是从右向左执行 从下到上执行
+            {
+                test: /\.js$/,
+                use: {
+                    loader: 'eslint-loader', // eslint
+                    options: {
+                        enforce: 'pre' // previous  post
+                    }
+                },
+            },
             {
                 test: /\.js$/,
                 use: {
