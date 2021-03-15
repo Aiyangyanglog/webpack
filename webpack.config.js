@@ -35,7 +35,7 @@ module.exports = {// 开发服务器的位配置
 
         }),
         new MiniCssExtractPlugin({ // 抽离样式
-            filename: 'main.css'
+            filename: 'css/main.css'
         }),
         // new webpack.ProvidePlugin({ // 在每个模块中都注入$
         //     $: 'jquery'
@@ -43,6 +43,22 @@ module.exports = {// 开发服务器的位配置
     ],
     module: {
         rules: [  // loader 默认是从右向左执行 从下到上执行
+            {
+                test: /\.html$/,
+                use: 'html-withimg-loader'
+            },
+            {
+                test: /\.(png|jpg|gif)$/,
+                // 做一个限制 当我们的图片 小于多少K的时候用base64来转化
+                // 否则用file-loader产生
+                use: {
+                    loader:'url-loader',
+                    options: {
+                        limit: 1,
+                        outputPath: 'img/'
+                    }
+                }
+            },
             // {
             //     test: require.resolve('jquery'),
             //     use: 'expose-loader?$'

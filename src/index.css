@@ -1,5 +1,9 @@
 @import './a.css';
 body{
     background: red;
-    transform: rotate(45deg);
+}
+div{
+    width: 240px;
+    height: 240px;
+    background: url('./logo.png');
 }

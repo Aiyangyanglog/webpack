@@ -1,10 +1,13 @@
 // webpack 打包图片
 // 1)在js中创建图片来引入
-// import logo from './logo.png';
-// let image = new Image();
-// console.log(logo);
-// image.src = './logo.png'; // 就是一个普通的字符串
-// document.body.appendChild(image);
+// file-loader 默认会在内部生成一张图片到build目录下
+// 把生成图片的名字返回回来
+import './index.css';
+import logo from './logo.png';
+let image = new Image();
+console.log(logo);
+image.src = logo; // 就是一个普通的字符串
+document.body.appendChild(image);
 
 // 2)在css引入background('url')
 // 3)<img src="" alt="">
